@@ -8,5 +8,3 @@ flutter_native_splash:
     icon_background_color: "#ffffff"
     image_dark: assets/icons/favicon-dark.png
     icon_background_color_dark: "#000000"
-
-  web: false

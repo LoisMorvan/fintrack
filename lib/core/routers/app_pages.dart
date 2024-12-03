@@ -1,7 +1,7 @@
 import 'package:fintrack/onboarding/onboarding_page.dart';
 import 'package:get/get.dart';
-import 'package:fintrack/auth/login_page.dart';
-import 'package:fintrack/auth/signup_page.dart';
+import 'package:fintrack/auth/screens/login_page.dart';
+import 'package:fintrack/auth/screens/signup_page.dart';
 
 class AppRoutes {
   static const String onboarding = '/onboarding';

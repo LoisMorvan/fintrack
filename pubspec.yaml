@@ -40,7 +40,8 @@ dependencies:
   gap: ^3.0.1
   firebase_auth: ^5.3.3
   firebase_core: ^3.8.0
-  flutter_dotenv: ^5.2.1
+  fl_chart: ^0.69.2
+  envied: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -51,13 +52,16 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^5.0.0
+  envied_generator: ^1.0.0
+  build_runner: ^2.4.13
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthController authController = Get.put(AuthController());
+    final AuthController authController = Get.find<AuthController>();
 
     return Scaffold(
       body: Padding(

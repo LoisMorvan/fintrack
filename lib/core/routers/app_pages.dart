@@ -1,6 +1,8 @@
 import 'package:fintrack/auth/controllers/auth_controller.dart';
 import 'package:fintrack/home/controllers/home_controller.dart';
 import 'package:fintrack/home/screens/home_page.dart';
+import 'package:fintrack/income/controllers/income_controller.dart';
+import 'package:fintrack/income/screens/income_page.dart';
 import 'package:fintrack/onboarding/onboarding_page.dart';
 import 'package:get/get.dart';
 import 'package:fintrack/auth/screens/login_page.dart';
@@ -47,7 +49,10 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.incomes,
-      page: () => const HomePage(),
+      page: () => const IncomePage(),
+      binding: BindingsBuilder(() {
+        Get.put(IncomeController());
+      }),
     ),
     GetPage(
       name: AppRoutes.expenses,

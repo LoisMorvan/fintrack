@@ -1,6 +1,7 @@
 import 'package:fintrack/core/main/screens/main_navigation.dart';
 import 'package:fintrack/core/widgets/custom_pie_chart.dart';
 import 'package:fintrack/core/widgets/interactive_pie_chart.dart';
+import 'package:fintrack/core/widgets/page_title.dart';
 import 'package:fintrack/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final HomeController homeController = Get.put(HomeController());
+  final HomeController homeController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +27,8 @@ class HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Gap(30),
-              const Text(
-                'Total Assets',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const Gap(8),
-              const Text(
-                '10,000 €',
-                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-              ),
-              const Gap(16),
+              PageTitleWidget(title: 'Total Assets', value: 10000.0.obs),
+              Gap(24),
               CustomPieChart(
                   title: 'Distribution of assets',
                   data: homeController.investmentsData),

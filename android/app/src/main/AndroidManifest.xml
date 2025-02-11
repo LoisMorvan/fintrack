@@ -2,7 +2,8 @@
     <application
         android:label="fintrack"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon"
+        android:windowBackground="@android:color/white">
         <activity
             android:name=".MainActivity"
             android:exported="true"

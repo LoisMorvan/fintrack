@@ -32,7 +32,6 @@ class InteractivePieChart extends StatelessWidget {
         ),
         const Gap(8),
         Obx(() {
-          // Vérifie si le pourcentage est à 0
           final bool isPercentageZero = percentage.value == 0;
 
           return SizedBox(

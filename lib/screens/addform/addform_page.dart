@@ -17,6 +17,7 @@ class AddFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AddFormController controller = Get.find<AddFormController>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -29,7 +30,7 @@ class AddFormPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: formKey,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +51,11 @@ class AddFormPage extends StatelessWidget {
                 Center(
                   child: CustomButton(
                     text: 'Save',
-                    onPressed: () => controller.saveForm(),
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        controller.saveForm();
+                      }
+                    },
                     icon: Icons.save,
                     color: AppColors.buttonPrimary,
                   ),

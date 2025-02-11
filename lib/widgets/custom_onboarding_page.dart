@@ -11,10 +11,20 @@ class CustomOnboardingPage extends PageViewModel {
   }) : super(
           title: title,
           bodyWidget: bodyWidget ?? Text(body ?? "", style: AppFonts.body),
-          image: Center(child: Image.asset(imagePath, height: 175.0)),
+          image: Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
           decoration: const PageDecoration(
             titleTextStyle: AppFonts.h1,
             bodyTextStyle: AppFonts.body,
+            imagePadding: EdgeInsets.zero,
           ),
         );
 }

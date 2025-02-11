@@ -4,6 +4,7 @@ import 'package:fintrack/core/controllers/navigation_controller.dart';
 import 'package:fintrack/core/database/database.dart';
 import 'package:fintrack/core/routers/app_pages.dart';
 import 'package:fintrack/core/routers/app_routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +30,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final String initialRoute =
+        auth.currentUser != null ? AppRoutes.home : AppRoutes.onboarding;
     return GetMaterialApp(
       title: 'FinTrack',
       theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.onboarding,
+      initialRoute: initialRoute,
       getPages: AppPages.pages,
       initialBinding: GlobalBindings(),
     );

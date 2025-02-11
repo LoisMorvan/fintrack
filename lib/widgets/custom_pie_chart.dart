@@ -33,7 +33,14 @@ class CustomPieChart extends StatelessWidget {
             PieChartData(
               sections: data.isNotEmpty
                   ? homeController.getPieChartDataFromList(data)
-                  : [],
+                  : [
+                      PieChartSectionData(
+                        color: Colors.grey.shade300.withOpacity(0.4),
+                        value: 100,
+                        title: 'No data',
+                        radius: 100,
+                      ),
+                    ],
               centerSpaceRadius: 0,
               sectionsSpace: 0,
             ),

@@ -5,6 +5,7 @@ import 'package:fintrack/core/models/investment_line.dart';
 import 'package:fintrack/core/routers/app_routes.dart';
 import 'package:fintrack/core/services/investment_line_service.dart';
 import 'package:fintrack/core/utils/snackbar_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class InvestmentLineDetailController extends GetxController {
@@ -23,10 +24,17 @@ class InvestmentLineDetailController extends GetxController {
   var quantity = 0.0.obs;
   var monthlyAmount = 0.0.obs;
 
+  // Déclare les contrôleurs pour la quantité et le montant mensuel
+  late TextEditingController quantityController;
+  late TextEditingController monthlyAmountController;
+
   @override
   void onInit() {
     super.onInit();
     _initializeFields();
+    quantityController = TextEditingController(text: quantity.value.toString());
+    monthlyAmountController =
+        TextEditingController(text: monthlyAmount.value.toString());
   }
 
   // Initialise les valeurs des champs
@@ -87,5 +95,13 @@ class InvestmentLineDetailController extends GetxController {
   void _updateInvestmentLine() {
     investmentLine.quantity = quantity.value;
     investmentLine.monthlyAmount = monthlyAmount.value;
+  }
+
+  @override
+  void onClose() {
+    // N'oublie pas de libérer les contrôleurs lorsque la page est fermée
+    quantityController.dispose();
+    monthlyAmountController.dispose();
+    super.onClose();
   }
 }

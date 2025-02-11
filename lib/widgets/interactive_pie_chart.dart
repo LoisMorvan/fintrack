@@ -31,43 +31,46 @@ class InteractivePieChart extends StatelessWidget {
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const Gap(8),
-        Obx(() => SizedBox(
-              height: 200,
-              child: percentage.value > 0
-                  ? Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        PieChart(
-                          PieChartData(
-                            sections: [
-                              PieChartSectionData(
-                                color: homeController.interactiveColor.value,
-                                value: percentage.value,
-                                title: '',
-                                radius: 100,
-                              ),
-                              PieChartSectionData(
-                                color: Colors.grey.shade300.withOpacity(0.4),
-                                value: 100 - percentage.value,
-                                title: '',
-                                radius: 100,
-                              ),
-                            ],
-                            centerSpaceRadius: 0,
-                            sectionsSpace: 0,
-                          ),
-                        ),
-                        Text(
-                          MoneyFormatter.format(homeController.getSavings()),
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    )
-                  : const SizedBox.shrink(),
-            )),
+        Obx(() {
+          // Vérifie si le pourcentage est à 0
+          final bool isPercentageZero = percentage.value == 0;
+
+          return SizedBox(
+            height: 200,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                PieChart(
+                  PieChartData(
+                    sections: [
+                      PieChartSectionData(
+                        color: homeController.interactiveColor.value,
+                        value: percentage.value,
+                        title: '',
+                        radius: 100,
+                      ),
+                      PieChartSectionData(
+                        color: Colors.grey.shade300.withOpacity(0.4),
+                        value: isPercentageZero ? 100 : 100 - percentage.value,
+                        title: '',
+                        radius: 100,
+                      ),
+                    ],
+                    centerSpaceRadius: 0,
+                    sectionsSpace: 0,
+                  ),
+                ),
+                Text(
+                  MoneyFormatter.format(homeController.getSavings()),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }),
         const Gap(16),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,3 +1,4 @@
+import 'package:fintrack/widgets/custom_nav_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:fintrack/core/routers/app_routes.dart';
@@ -14,11 +15,11 @@ class NavigationController extends GetxController {
   ];
 
   final List<BottomNavigationBarItem> navItems = [
-    _buildNavItem(Icons.home, 'Dashboard'),
-    _buildNavItem(Icons.attach_money, 'Income'),
-    _buildNavItem(Icons.insert_drive_file, 'Expense'),
-    _buildNavItem(Icons.trending_up, 'Investment'),
-    _buildNavItem(Icons.settings, 'Settings'),
+    CustomNavItem(icon: Icons.home, label: 'Dashboard'),
+    CustomNavItem(icon: Icons.attach_money, label: 'Income'),
+    CustomNavItem(icon: Icons.insert_drive_file, label: 'Expense'),
+    CustomNavItem(icon: Icons.trending_up, label: 'Investment'),
+    CustomNavItem(icon: Icons.settings, label: 'Settings'),
   ];
 
   void changePage(int index) {
@@ -30,11 +31,4 @@ class NavigationController extends GetxController {
   }
 
   String getPage() => pages[currentIndex.value];
-
-  static BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
-    return BottomNavigationBarItem(
-      icon: Icon(icon),
-      label: label,
-    );
-  }
 }

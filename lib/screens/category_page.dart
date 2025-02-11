@@ -34,14 +34,15 @@ class CategoryPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Obx(() => PageTitleWidget(
-                    title: title,
-                    value: categoryType == CategoryType.investment
-                        ? investmentLineController.calculateTotal().obs
-                        : categoryLineController
-                            .calculateTotal(categoryType)
-                            .obs,
-                  )),
+              Obx(() {
+                final total = categoryType == CategoryType.investment
+                    ? investmentLineController.calculateTotal()
+                    : categoryLineController.calculateTotal(categoryType);
+                return PageTitleWidget(
+                  title: title,
+                  value: total.obs,
+                );
+              }),
               const Gap(32),
               Expanded(
                 child: Obx(() {

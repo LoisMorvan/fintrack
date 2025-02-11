@@ -2,6 +2,7 @@ import 'package:fintrack/core/constants/app_fonts.dart';
 import 'package:fintrack/core/constants/app_colors.dart';
 import 'package:fintrack/core/routers/app_routes.dart';
 import 'package:fintrack/widgets/custom_button.dart';
+import 'package:fintrack/widgets/custom_onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:get/get.dart';
@@ -14,17 +15,17 @@ class OnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntroductionScreen(
       pages: [
-        _buildPage(
+        CustomOnboardingPage(
           title: "Welcome to FinTrack",
           body: "Discover how to manage your assets efficiently.",
           imagePath: "assets/images/onboarding1.png",
         ),
-        _buildPage(
+        CustomOnboardingPage(
           title: "Track your expenses",
           body: "Keep an eye on your expenses to better control your finances.",
           imagePath: "assets/images/onboarding2.png",
         ),
-        _buildPage(
+        CustomOnboardingPage(
           title: "Invest wisely",
           bodyWidget: Column(
             children: [
@@ -56,24 +57,6 @@ class OnboardingPage extends StatelessWidget {
         activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24.0),
         ),
-      ),
-    );
-  }
-
-  // Méthode pour éviter la répétition de code dans l'onboarding
-  PageViewModel _buildPage({
-    required String title,
-    String? body,
-    Widget? bodyWidget,
-    required String imagePath,
-  }) {
-    return PageViewModel(
-      title: title,
-      bodyWidget: bodyWidget ?? Text(body ?? "", style: AppFonts.body),
-      image: Center(child: Image.asset(imagePath, height: 175.0)),
-      decoration: const PageDecoration(
-        titleTextStyle: AppFonts.h1,
-        bodyTextStyle: AppFonts.body,
       ),
     );
   }

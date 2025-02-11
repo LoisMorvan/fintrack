@@ -37,14 +37,14 @@ class SettingsController extends GetxController {
   void updateInvestmentPercentage(double newPercentage) {
     investmentPercentage.value = newPercentage;
     debounce(investmentPercentage, (_) => _savePercentagesToDatabase(),
-        time: const Duration(seconds: 1));
+        time: const Duration(milliseconds: 100));
   }
 
   // Met à jour le pourcentage d'activité avec un debounce
   void updateActivityPercentage(double newPercentage) {
     activityPercentage.value = newPercentage;
     debounce(activityPercentage, (_) => _savePercentagesToDatabase(),
-        time: const Duration(seconds: 1));
+        time: const Duration(milliseconds: 100));
   }
 
   // Sauvegarde les pourcentages dans la base de données
